@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizVault - Quiz Platform for Students</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <button class="back-btn" onclick="goBack()" style="display: none;">← Back</button>
+        
+        <!-- Homepage Section -->
+        <div id="homepage" class="section active">
+            <div class="header">
+                <h1>🎯 QuizVault</h1>
+                <p>Your personal quiz platform for college success</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn" onclick="showSection('create-quiz')">📝 Create New Quiz</button>
+                <button class="btn" onclick="showSection('quiz-list')">🎯 Take a Quiz</button>
+            </div>
+        </div>
+
+        <!-- Create Quiz Section -->
+        <div id="create-quiz" class="section">
+            <div class="header">
+                <h1>📝 Create Your Quiz</h1>
+                <p>Build an engaging quiz for your fellow students</p>
+            </div>
+
+            <form id="quiz-form">
+                <div class="form-group">
+                    <label for="quiz-title">Quiz Title:</label>
+                    <input type="text" id="quiz-title" placeholder="Enter quiz title" required>
+                </div>
+
+                <div id="questions-container">
+                    <div class="question-card">
+                        <h3>Question 1</h3>
+                        <div class="form-group">
+                            <label>Question:</label>
+                            <textarea class="question-text" placeholder="Enter your question" required></textarea>
+                        </div>
+                        
+                        <div class="option-group">
+                            <input type="text" class="option" placeholder="Option A" required>
+                            <input type="text" class="option" placeholder="Option B" required>
+                            <input type="text" class="option" placeholder="Option C" required>
+                            <input type="text" class="option" placeholder="Option D" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Correct Answer:</label>
+                            <select class="correct-answer" required>
+                                <option value="">Select correct answer</option>
+                                <option value="0">Option A</option>
+                                <option value="1">Option B</option>
+                                <option value="2">Option C</option>
+                                <option value="3">Option D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <button type="button" class="btn-secondary" onclick="addQuestion()">+ Add Question</button>
+                    <button type="submit" class="btn">💾 Save Quiz</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Quiz List Section -->
+        <div id="quiz-list" class="section">
+            <div class="header">
+                <h1>🎯 Available Quizzes</h1>
+                <p>Choose a quiz to test your knowledge</p>
+            </div>
+            
+            <div id="quizzes-container">
+                <!-- Quizzes will be loaded here dynamically -->
+            </div>
+        </div>
+
+        <!-- Take Quiz Section -->
+        <div id="take-quiz" class="section">
+            <div class="header">
+                <h1 id="current-quiz-title">Quiz Title</h1>
+            </div>
+            
+            <div id="quiz-content">
+                <!-- Quiz questions will be loaded here dynamically -->
+            </div>
+            
+            <div class="question-navigation">
+                <span class="question-counter" id="question-counter">Question 1 of 5</span>
+                <div>
+                    <button class="btn-secondary" onclick="previousQuestion()" id="prev-btn" style="display: none;">Previous</button>
+                    <button class="btn" onclick="nextQuestion()" id="next-btn">Next</button>
+                    <button class="btn" onclick="submitQuiz()" id="submit-btn" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="section">
+            <div class="result-card">
+                <h1>🎉 Quiz Completed!</h1>
+                <div class="score-display" id="final-score">0/0</div>
+                <p id="score-message">Great job!</p>
+                
+                <div class="answer-review" id="answer-review">
+                    <!-- Answer review will be shown here dynamically -->
+                </div>
+                
+                <button class="btn" onclick="showSection('homepage')">🏠 Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
